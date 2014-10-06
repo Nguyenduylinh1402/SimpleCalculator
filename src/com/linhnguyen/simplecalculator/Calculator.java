@@ -15,7 +15,7 @@ public class Calculator extends Activity {
 			btnSeven, btnEight, btnNine, btnAdd, btnSub, btnMul, btnDiv,
 			btnEqual, btnDel;
 	String cal = "";
-	//String equal = "";
+	// String equal = "";
 	int member = 0;
 	int result = 0;
 	boolean flag = false;
@@ -69,7 +69,7 @@ public class Calculator extends Activity {
 			Editable editTable = edtResult.getText();
 			switch (v.getId()) {
 			case R.id.btnZero:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -84,7 +84,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnOne:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -99,7 +99,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnTwo:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -114,7 +114,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnThree:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -129,7 +129,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnFour:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -144,7 +144,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnFive:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -159,7 +159,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnSix:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -186,7 +186,7 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnEight:
-				if(equal == true){
+				if (equal == true) {
 					result = 0;
 				}
 				if (flag == false) {
@@ -201,12 +201,17 @@ public class Calculator extends Activity {
 				flag = true;
 				break;
 			case R.id.btnNine:
-				if(equal == true){
+				// clear result sau khi phep toan thuc hien xong va thuc hien
+				// phep toan moi
+				if (equal == true) {
 					result = 0;
 				}
+				// sau khi thuc hien phep tinh, clear editable luu tren mang
+				// hinh de nhap so moi, khoi append
 				if (flag == false) {
 					editTable.clear();
 				}
+				// clear member cu
 				if (member != 0) {
 					member = 0;
 					edtResult.setText("");
@@ -217,20 +222,20 @@ public class Calculator extends Activity {
 				break;
 			case R.id.btnAdd:
 				cal = "+";
+				// lan dau tien tinh toan: result = 0
 				if (result == 0) {
 					if (!edtResult.getText().toString().trim().equals("")) {
 						result = Integer.parseInt(edtResult.getText()
 								.toString());
 					}
 					// edtResult.setText("");
-				} else if (member != 0) {
+				} else if (member != 0) {// xoa gia tri luu cu, neu khong khi
+											// cong lien tuc result se cong lien
+											// tuc
 					member = 0;
 					// edtResult.setText("");
-				} else if (flag == true) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						member = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
+				} else if (flag == true) {// kiem tra so co duoc nhap hay ko
+					member = Integer.parseInt(edtResult.getText().toString());
 
 					// edtResult.setText("");
 					result = result + member;
@@ -238,8 +243,6 @@ public class Calculator extends Activity {
 				}
 				flag = false;
 				equal = false;
-				// editTable = editTable.append(btnAdd.getText());
-				// edtResult.setText(editTable);
 				break;
 			case R.id.btnSub:
 				cal = "-";
@@ -248,24 +251,16 @@ public class Calculator extends Activity {
 						result = Integer.parseInt(edtResult.getText()
 								.toString());
 					}
-					// edtResult.setText("");
 				} else if (member != 0) {
 					member = 0;
-					// edtResult.setText("");
 				} else if (flag == true) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						member = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
+					member = Integer.parseInt(edtResult.getText().toString());
 
-					// edtResult.setText("");
 					result = result - member;
 					edtResult.setText(Integer.toString(result));
 				}
 				flag = false;
 				equal = false;
-				// editTable = editTable.append(btnSub.getText());
-				// edtResult.setText(editTable);
 				break;
 			case R.id.btnMul:
 				cal = "*";
@@ -274,24 +269,16 @@ public class Calculator extends Activity {
 						result = Integer.parseInt(edtResult.getText()
 								.toString());
 					}
-					// edtResult.setText("");
 				} else if (member != 0) {
 					member = 0;
-					// edtResult.setText("");
 				} else if (flag == true) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						member = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
+					member = Integer.parseInt(edtResult.getText().toString());
 
-					// edtResult.setText("");
 					result = result * member;
 					edtResult.setText(Integer.toString(result));
 				}
 				flag = false;
 				equal = false;
-				// editTable = editTable.append(btnMul.getText());
-				// edtResult.setText(editTable);
 				break;
 			case R.id.btnDiv:
 				cal = "/";
@@ -300,29 +287,22 @@ public class Calculator extends Activity {
 						result = Integer.parseInt(edtResult.getText()
 								.toString());
 					}
-					// edtResult.setText("");
 				} else if (member != 0) {
 					member = 0;
-					// edtResult.setText("");
 				} else if (flag == true) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						member = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
+					member = Integer.parseInt(edtResult.getText().toString());
 
-					// edtResult.setText("");
 					result = result / member;
 					edtResult.setText(Integer.toString(result));
 				}
 				flag = false;
 				equal = false;
-				// editTable = editTable.append(btnDiv.getText());
-				// edtResult.setText(editTable);
 				break;
 			case R.id.btnEqual:
 				equal = true;
-				if (!cal.equals("")) {
-					if (member != 0) {
+				if (!cal.equals("")) {// co phep toan nao duoc nhap
+					if (member != 0) {// neu member != 0 thi da tinh toan trong
+										// phep toan
 						if (cal.equals("+") | cal.equals("-") | cal.equals("*")
 								| cal.equals("/")) {
 							edtResult.setText(Integer.toString(result));
@@ -358,9 +338,25 @@ public class Calculator extends Activity {
 
 				break;
 			case R.id.btnDel:
-				result = 0;
-				member = 0;
-				edtResult.setText("");
+				// result = 0;
+				// member = 0;
+				// edtResult.setText("");
+				int size = editTable.length();
+				if (size > 1) {
+					editTable.delete(size - 1, size);
+					edtResult.setText(editTable);
+					if(edtResult.getText().toString().equals("-"))
+						break;
+					result = Integer.parseInt(edtResult.getText().toString());
+				} else {
+					if (size == 1) {
+						editTable.delete(size - 1, size);
+					}
+					result = 0;
+					member = 0;
+					edtResult.setText("");
+				}
+				cal = "";
 				break;
 			default:
 				break;
