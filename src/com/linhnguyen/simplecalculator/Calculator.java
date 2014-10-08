@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Calculator extends Activity {
 	EditText edtResult;
@@ -15,12 +16,12 @@ public class Calculator extends Activity {
 			btnSeven, btnEight, btnNine, btnAdd, btnSub, btnMul, btnDiv,
 			btnEqual, btnDel;
 	String cal = "";
-	// String equal = "";
 	int member = 0;
 	int result = 0;
 	boolean flag = false;
 	boolean endflag = false;
 	boolean equal = false;
+	Editable editTable;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,297 +67,87 @@ public class Calculator extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			Editable editTable = edtResult.getText();
+			editTable = edtResult.getText();
 			switch (v.getId()) {
 			case R.id.btnZero:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnZero.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(0);
 				break;
 			case R.id.btnOne:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnOne.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(1);
 				break;
 			case R.id.btnTwo:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnTwo.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(2);
 				break;
 			case R.id.btnThree:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnThree.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(3);
 				break;
 			case R.id.btnFour:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnFour.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(4);
 				break;
 			case R.id.btnFive:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnFive.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(5);
 				break;
 			case R.id.btnSix:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnSix.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(6);
 				break;
 			case R.id.btnSeven:
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnSeven.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(7);
 				break;
 			case R.id.btnEight:
-				if (equal == true) {
-					result = 0;
-				}
-				if (flag == false) {
-					editTable.clear();
-				}
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnEight.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(8);
 				break;
 			case R.id.btnNine:
-				// clear result sau khi phep toan thuc hien xong va thuc hien
-				// phep toan moi
-				if (equal == true) {
-					result = 0;
-				}
-				// sau khi thuc hien phep tinh, clear editable luu tren mang
-				// hinh de nhap so moi, khoi append
-				if (flag == false) {
-					editTable.clear();
-				}
-				// clear member cu
-				if (member != 0) {
-					member = 0;
-					edtResult.setText("");
-				}
-				editTable = editTable.append(btnNine.getText());
-				edtResult.setText(editTable);
-				flag = true;
+				showInput(9);
+
+				// // clear result sau khi phep toan thuc hien xong va thuc hien
+				// // phep toan moi
+				// if (equal == true) {
+				// result = 0;
+				// }
+				// // sau khi thuc hien phep tinh, clear editable luu tren mang
+				// // hinh de nhap so moi, khoi append
+				// if (flag == false) {
+				// editTable.clear();
+				// }
+				// // clear member cu
+				// if (member != 0) {
+				// member = 0;
+				// edtResult.setText("");
+				// }
+				// editTable = editTable.append(btnNine.getText());
+				// edtResult.setText(editTable);
+				// flag = true;
 				break;
 			case R.id.btnAdd:
 				cal = "+";
-				// lan dau tien tinh toan: result = 0
-				if (result == 0) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						result = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
-					// edtResult.setText("");
-				} else if (member != 0) {// xoa gia tri luu cu, neu khong khi
-											// cong lien tuc result se cong lien
-											// tuc
-					member = 0;
-					// edtResult.setText("");
-				} else if (flag == true) {// kiem tra so co duoc nhap hay ko
-					member = Integer.parseInt(edtResult.getText().toString());
-
-					// edtResult.setText("");
-					result = result + member;
-					edtResult.setText(Integer.toString(result));
-				}
+				operator(cal);
 				flag = false;
 				equal = false;
 				break;
 			case R.id.btnSub:
 				cal = "-";
-				if (result == 0) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						result = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
-				} else if (member != 0) {
-					member = 0;
-				} else if (flag == true) {
-					member = Integer.parseInt(edtResult.getText().toString());
-
-					result = result - member;
-					edtResult.setText(Integer.toString(result));
-				}
+				operator(cal);
 				flag = false;
 				equal = false;
 				break;
 			case R.id.btnMul:
 				cal = "*";
-				if (result == 0) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						result = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
-				} else if (member != 0) {
-					member = 0;
-				} else if (flag == true) {
-					member = Integer.parseInt(edtResult.getText().toString());
-
-					result = result * member;
-					edtResult.setText(Integer.toString(result));
-				}
+				operator(cal);
 				flag = false;
 				equal = false;
 				break;
 			case R.id.btnDiv:
 				cal = "/";
-				if (result == 0) {
-					if (!edtResult.getText().toString().trim().equals("")) {
-						result = Integer.parseInt(edtResult.getText()
-								.toString());
-					}
-				} else if (member != 0) {
-					member = 0;
-				} else if (flag == true) {
-					member = Integer.parseInt(edtResult.getText().toString());
-
-					result = result / member;
-					edtResult.setText(Integer.toString(result));
-				}
+				operator(cal);
 				flag = false;
 				equal = false;
 				break;
 			case R.id.btnEqual:
 				equal = true;
-				if (!cal.equals("")) {// co phep toan nao duoc nhap
-					if (member != 0) {// neu member != 0 thi da tinh toan trong
-										// phep toan
-						if (cal.equals("+") | cal.equals("-") | cal.equals("*")
-								| cal.equals("/")) {
-							edtResult.setText(Integer.toString(result));
-						}
-					} else {
-						if (cal.equals("+")) {
-							member = Integer.parseInt(edtResult.getText()
-									.toString());
-							result = result + member;
-							edtResult.setText(Integer.toString(result));
-						}
-						if (cal.equals("-")) {
-							member = Integer.parseInt(edtResult.getText()
-									.toString());
-							result = result - member;
-							edtResult.setText(Integer.toString(result));
-						}
-						if (cal.equals("*")) {
-							member = Integer.parseInt(edtResult.getText()
-									.toString());
-							result = result * member;
-							edtResult.setText(Integer.toString(result));
-						}
-						if (cal.equals("/")) {
-							member = Integer.parseInt(edtResult.getText()
-									.toString());
-							result = result / member;
-							edtResult.setText(Integer.toString(result));
-						}
-					}
-					flag = false;
-				}
-
+				operatorEqual();
 				break;
 			case R.id.btnDel:
-				// result = 0;
-				// member = 0;
-				// edtResult.setText("");
-				int size = editTable.length();
-				if (size > 1) {
-					editTable.delete(size - 1, size);
-					edtResult.setText(editTable);
-					if(edtResult.getText().toString().equals("-"))
-						break;
-					result = Integer.parseInt(edtResult.getText().toString());
-				} else {
-					if (size == 1) {
-						editTable.delete(size - 1, size);
-					}
-					result = 0;
-					member = 0;
-					edtResult.setText("");
-				}
-				cal = "";
+				backSpace();
 				break;
 			default:
 				break;
@@ -364,11 +155,87 @@ public class Calculator extends Activity {
 		}
 	};
 
-	public void hideSoftKeyboard() {
-		if (getCurrentFocus() != null) {
-			InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-			inputMethodManager.hideSoftInputFromWindow(getCurrentFocus()
-					.getWindowToken(), 0);
+	public void showInput(int input) {
+		if (equal == true) {
+			result = 0;
+		}
+		if (flag == false) {
+			editTable.clear();
+		}
+		if (member != 0) {
+			member = 0;
+			edtResult.setText("");
+		}
+		editTable = editTable.append(Integer.toString(input));
+		edtResult.setText(editTable);
+		flag = true;
+	}
+
+	public void operator(String op) {
+		if (result == 0) {
+			if (!edtResult.getText().toString().trim().equals("")) {
+				result = Integer.parseInt(edtResult.getText().toString());
+			}
+		} else if (member != 0) {
+			member = 0;
+		} else if (flag == true) {
+			member = Integer.parseInt(edtResult.getText().toString());
+			if (op == "+") {
+				result = result + member;
+			} else if (op == "-") {
+				result = result - member;
+			} else if (op == "*") {
+				result = result * member;
+			} else if (op == "/") {
+				result = result / member;
+			}
+
+			edtResult.setText(Integer.toString(result));
+		}
+	}
+
+	public void operatorEqual() {
+		if (!cal.equals("")) {// co phep toan nao duoc nhap
+			if (member != 0) {// neu member != 0 thi da tinh toan trong
+								// phep toan
+				if (cal.equals("+") | cal.equals("-") | cal.equals("*")
+						| cal.equals("/")) {
+					edtResult.setText(Integer.toString(result));
+				}
+			} else {
+				member = Integer.parseInt(edtResult.getText().toString());
+				if (cal.equals("+")) {
+					result = result + member;
+				} else if (cal.equals("-")) {
+					result = result - member;
+				} else if (cal.equals("*")) {
+					result = result * member;
+				} else if (cal.equals("/")) {
+					result = result / member;
+				}
+
+				edtResult.setText(Integer.toString(result));
+			}
+			flag = false;
+		}
+	}
+
+	public void backSpace() {
+		if (edtResult.length() > 0) {
+			int temp = Integer.parseInt(edtResult.getText().toString());
+			temp = temp / 10;
+			if (temp == 0) {
+				result = 0;
+				member = 0;
+				edtResult.setText("");
+			} else {
+				edtResult.setText(Integer.toString(temp));
+			}
+			if (result != 0) {
+				result = temp;
+			}
+			flag = true;
+			cal = "";
 		}
 	}
 
